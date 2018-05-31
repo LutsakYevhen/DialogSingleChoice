@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DialogChoice</string>
+    <string name="ok">OK</string>
+    <string name="select_city">Press to select city</string>
+    <string-array name="city">
+        <item>LONDON</item>
+        <item>NEW-YORK</item>
+        <item>PARIS</item>
+    </string-array>
 </resources>
