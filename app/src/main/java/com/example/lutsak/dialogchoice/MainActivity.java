@@ -7,13 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, DialogListener {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final String FRAGMENT_TAG = "Dialog fragment";
 
     private TextView mCitySelect;
-    private DialogFragment mDialogFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Log.d(LOG_TAG, "onClick");
         if (v.getId() == R.id.text_city){
-            mDialogFragment = new Dialog();
-            mDialogFragment.show(getSupportFragmentManager(), FRAGMENT_TAG);
+            DialogFragment dialogFragment = new Dialog();
+            dialogFragment.show(getSupportFragmentManager(), FRAGMENT_TAG);
         }
+    }
+
+    @Override
+    public void checkedId(int position) {
+        Log.d(LOG_TAG, "set city text");
+        mCitySelect.setText(getResources().getStringArray(R.array.city)[position]);
     }
 }
